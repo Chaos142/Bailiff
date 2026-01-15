@@ -17,7 +17,3 @@ Bailiff is a streamlined sequence management tool for mock trial timekeepers. Or
     * **Overruled:** Time counts against the Opposing side (deducted from the linked segment).
     * **Bench:** Time is paused for both sides (used for pauses, bench conferences, or simple clock-stops).
 * **Local Session Sync:** Host (Timekeeper) controls the clock while secondary devices act as digital timecards.
-
-## Author
-Josh Felder
-[GitHub Profile](https://github.com/Chaos142)
