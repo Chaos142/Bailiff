@@ -3,9 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bailiff</title>
+    <title>Bailiff - Mock Trial Timer</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet">
 </head>
 <body>
-    
+
+    <header>
+        <h1>Bailiff - Mock Trial Timer</h1>
+        <div class="byline">
+            Created by <span>Josh Felder</span>
+            <a href="https://github.com/Chaos142" target="_blank">GitHub</a>
+        </div>
+    </header>
+
+    <div class="team-row">
+        <div class="input-group">
+            <label for="p-name">Plaintiff / Prosecution</label>
+            <input type="text" id="p-name" placeholder="e.g. Brown">
+        </div>
+        <div class="vs">vs.</div>
+        <div class="input-group">
+            <label for="d-name">Defense</label>
+            <input type="text" id="d-name" placeholder="e.g. Board of Education">
+        </div>
+    </div>
+
+    <div class="panel-container">
+        <div class="court-panel">
+            <div class="panel-header">
+                <button id="add-block-btn">+ Add Block</button>
+            </div>
+
+            <div id="block-edit-panel" class="block-edit-panel hidden">
+                <h3>Edit Block</h3>
+                <div class="edit-fields">
+                    <label>Name<input type="text" id="edit-block-name"></label>
+                    <label>Time<input type="text" id="edit-block-time"></label>
+                    <label>
+                        Link to:
+                        <select id="edit-block-link">
+                            <option value="">None</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="edit-actions">
+                    <button id="save-block-btn">Save Changes</button>
+                    <button id="cancel-edit-btn">Cancel</button>
+                </div>
+            </div>
+
+            <div id="block-list" class="block-list">
+                </div>
+        </div>
+    </div>
+
+    <div class="controls">
+        </div>
+
+    <script type="module" src="main.js"></script>
 </body>
 </html>
