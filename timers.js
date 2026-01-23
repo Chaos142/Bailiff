@@ -1,4 +1,8 @@
-// Sample data - in production, this would come from the setup page
+/*
+30 sec should be different color than paused time
+after 0, make it just be red and count up (it should still have same controls, but adding paused time will add instead of subtract because its essentially negative, but dont display negative, left sidebar should show that time in red)
+resuming should immediately switch to the proper color, right now its switching to blue and then updating after the next tick
+*/
 let blocks = [
     { id: 1, name: "Opening Statement", time: "05:00", linked: null, remainingSeconds: null },
     { id: 2, name: "Direct Examination", time: "25:00", linked: 3, remainingSeconds: null },
