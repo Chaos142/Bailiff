@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bailiff - Timer View</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="timers.css">
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h1>Bailiff</h1>
+            <div class="subtitle">Timer View</div>
+        </div>
+        <div class="block-widgets" id="block-widgets">
+            <!-- Widgets will be inserted here -->
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="timer-display">
+            <div class="current-block-name" id="current-block-name">Opening Statement</div>
+            <div class="countdown" id="countdown">05:00</div>
+            <div class="time-label" id="time-label">Time Remaining</div>
+            <div class="secondary-timer" id="secondary-timer">05:00</div>
+        </div>
+
+        <div class="timer-controls" id="timer-controls">
+            <button class="control-btn btn-start" id="start-btn">Start</button>
+            <button class="control-btn btn-stop" id="stop-btn" style="display: none;">Stop</button>
+            <button class="control-btn btn-next" id="next-btn" style="display: none;">Next Block</button>
+        </div>
+    </div>
+
+    <script src="timers.js"></script>
+</body>
+</html>
