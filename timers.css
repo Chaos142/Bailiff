@@ -12,7 +12,7 @@ body {
 
 /* ===== SIDEBAR ===== */
 .sidebar {
-    width: 320px;
+    width: 280px;
     background: #222;
     border-right: 1px solid #333;
     display: flex;
@@ -21,19 +21,22 @@ body {
 }
 
 .sidebar-header {
-    padding: 24px;
+    padding: 20px;
     border-bottom: 1px solid #333;
 }
 
-.sidebar-header h1 {
-    font-size: 1.5rem;
-    font-weight: 800;
+.sidebar-header h2 {
+    font-size: 1.2rem;
+    font-weight: 700;
     margin-bottom: 4px;
+    color: #fff;
 }
 
 .sidebar-header .subtitle {
-    font-size: 0.85rem;
+    font-size: 0.75rem;
     color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 .block-widgets {
@@ -62,17 +65,18 @@ body {
     background: #1a2633;
 }
 
+.block-widget.linked-highlight {
+    border-color: #cc3333;
+    background: #331a1a;
+}
+
 .block-widget.completed {
     opacity: 0.5;
     background: #252525;
 }
 
-.block-widget.completed .widget-name {
-    text-decoration: line-through;
-}
-
 .widget-name {
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 600;
     margin-bottom: 8px;
     display: flex;
@@ -89,12 +93,24 @@ body {
     display: flex;
     justify-content: space-between;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
 }
 
 .widget-remaining {
     color: #00bbff;
     font-weight: 600;
+}
+
+.widget-remaining.negative {
+    color: #ff4444;
+}
+
+.widget-remaining.warning {
+    color: #ffaa00;
+}
+
+.widget-remaining.critical {
+    color: #ff4444;
 }
 
 .widget-total {
@@ -143,7 +159,12 @@ body {
 }
 
 .countdown.paused {
-    color: #ffaa00;
+    color: #cc8800;
+}
+
+.countdown.overtime {
+    color: #ff4444;
+    animation: pulse 1s infinite;
 }
 
 @keyframes pulse {
@@ -176,7 +197,7 @@ body {
 /* ===== CONTROLS ===== */
 .timer-controls {
     display: flex;
-    gap: 20px;
+    gap: 16px;
     align-items: center;
     flex-wrap: wrap;
     justify-content: center;
@@ -272,66 +293,4 @@ body {
 
 .btn-restart:hover {
     background: #00bb66;
-}deduct:hover {
-    background: #ff5555;
-}
-
-.btn-deduct-linked {
-    background: #cc44ff;
-    color: white;
-}
-
-.btn-deduct-linked:hover {
-    background: #dd55ff;
-}
-
-.btn-discard {
-    background: #666;
-    color: white;
-}
-
-.btn-discard:hover {
-    background: #777;
-}
-
-.btn-next {
-    background: #666;
-    color: white;
-}
-
-.btn-next:hover {
-    background: #777;
-}
-
-.btn-stop {
-    background: #cc4444;
-    color: white;
-}
-
-.btn-stop:hover {
-    background: #dd5555;
-}
-
-.btn-restart {
-    background: #00cc66;
-    color: white;
-}
-
-.btn-restart:hover {
-    background: #00dd77;
-}
-
-/* ===== EMPTY STATE ===== */
-.empty-state {
-    text-align: center;
-    color: #666;
-}
-
-.empty-state h2 {
-    font-size: 2rem;
-    margin-bottom: 12px;
-}
-
-.empty-state p {
-    font-size: 1.1rem;
 }

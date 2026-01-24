@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bailiff - Mock Trial Timer</title>
-    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
 
@@ -29,6 +29,14 @@
         </div>
     </div>
 
+    <div class="toggle-container">
+        <label for="advanced-toggle" class="toggle-switch">
+            <input type="checkbox" id="advanced-toggle">
+            <span class="toggle-slider"></span>
+        </label>
+        <label for="advanced-toggle">Advanced Objection Mode</label>
+    </div>
+
     <div class="panel-container">
         <div class="court-panel">
             <div class="panel-header">
@@ -40,7 +48,7 @@
                 <div class="edit-fields">
                     <label>Name<input type="text" id="edit-block-name"></label>
                     <label>Time<input type="text" id="edit-block-time"></label>
-                    <label>
+                    <label id="link-label">
                         Link to:
                         <select id="edit-block-link">
                             <option value="">None</option>
@@ -53,14 +61,13 @@
                 </div>
             </div>
 
-            <div id="block-list" class="block-list">
-                </div>
+            <div id="block-list" class="block-list"></div>
         </div>
     </div>
 
-    <div class="controls">
-        </div>
-
-    <script type="module" src="main.js"></script>
+    <div class="start-trial-container">
+        <button id="start-trial-btn">Start Trial</button>
+    </div>
+    <script src="setup.js"></script>
 </body>
 </html>
