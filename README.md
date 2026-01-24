@@ -1,3 +1,4 @@
+![Bailiff](banner.png)
 # Bailiff - Mock Trial Timer (WIP)
 
 Bailiff is a streamlined sequence management tool for mock trial timekeepers. Originally built for use at VLRE (Virginia Law Related Education) competitions, but it is flexible enough for any trial format. 
