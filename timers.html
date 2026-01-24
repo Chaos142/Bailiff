@@ -36,9 +36,26 @@
         </div>
 
         <div class="timer-controls" id="timer-controls">
-            <button class="control-btn btn-start" id="start-btn">Start</button>
-            <button class="control-btn btn-stop" id="stop-btn" style="display: none;">Stop</button>
-            <button class="control-btn btn-next" id="next-btn" style="display: none;">Next Block</button>
+            <div class="quick-controls">
+                <div class="quick-row">
+                    <button class="quick-btn remove" id="sub-30-btn">-30s</button>
+                    <button class="quick-btn remove" id="sub-15-btn">-15s</button>
+                    <button class="quick-btn reset" id="reset-btn">Reset</button>
+                    <button class="quick-btn add" id="add-15-btn">+15s</button>
+                    <button class="quick-btn add" id="add-30-btn">+30s</button>
+                </div>
+                <div class="quick-row time-input-group">
+                    <input type="text" class="time-input" id="custom-time-input" placeholder="00:00">
+                    <button class="quick-btn add" id="add-custom-btn">Add</button>
+                    <button class="quick-btn" id="set-custom-btn">Set</button>
+                    <button class="quick-btn remove" id="sub-custom-btn">Remove</button>
+                </div>
+            </div>
+            <div class="main-controls">
+                <button class="control-btn btn-start" id="start-btn">Start</button>
+                <button class="control-btn btn-stop" id="stop-btn" style="display: none;">Stop</button>
+                <button class="control-btn btn-next" id="next-btn" style="display: none;">Next Block</button>
+            </div>
         </div>
     </div>
 

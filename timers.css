@@ -201,6 +201,30 @@ body {
     align-items: center;
     flex-wrap: wrap;
     justify-content: center;
+    flex-direction: column;
+}
+
+.quick-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+}
+
+.quick-row {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.main-controls {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .control-btn {
@@ -212,6 +236,71 @@ body {
     cursor: pointer;
     transition: all 0.2s;
     font-family: inherit;
+}
+
+.quick-btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+    background: #444;
+    color: white;
+}
+
+.quick-btn:hover {
+    background: #555;
+}
+
+.quick-btn.add {
+    background: #0077cc;
+}
+
+.quick-btn.add:hover {
+    background: #0088ee;
+}
+
+.quick-btn.remove {
+    background: #cc3333;
+}
+
+.quick-btn.remove:hover {
+    background: #dd4444;
+}
+
+.quick-btn.reset {
+    background: #666;
+}
+
+.quick-btn.reset:hover {
+    background: #777;
+}
+
+.time-input-group {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.time-input {
+    width: 80px;
+    padding: 10px;
+    font-size: 0.9rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    border-radius: 8px;
+    border: 1px solid #444;
+    background: #2a2a2a;
+    color: white;
+    text-align: center;
+}
+
+.time-input:focus {
+    outline: none;
+    border-color: #0077cc;
 }
 
 .btn-start {

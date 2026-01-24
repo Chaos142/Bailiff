@@ -46,6 +46,15 @@ const startBtn = document.getElementById('start-btn');
 const stopBtn = document.getElementById('stop-btn');
 const nextBtn = document.getElementById('next-btn');
 const timerControls = document.getElementById('timer-controls');
+const resetBtn = document.getElementById('reset-btn');
+const add15Btn = document.getElementById('add-15-btn');
+const add30Btn = document.getElementById('add-30-btn');
+const sub15Btn = document.getElementById('sub-15-btn');
+const sub30Btn = document.getElementById('sub-30-btn');
+const customTimeInput = document.getElementById('custom-time-input');
+const addCustomBtn = document.getElementById('add-custom-btn');
+const setCustomBtn = document.getElementById('set-custom-btn');
+const subCustomBtn = document.getElementById('sub-custom-btn');
 
 // Set team names
 document.getElementById('left-team-name').textContent = leftTeamName;
@@ -185,7 +194,7 @@ function startTimer() {
     startBtn.className = 'control-btn btn-pause';
     stopBtn.style.display = 'inline-block';
     timeLabel.textContent = 'Time Remaining';
-    updateCountdownColor(); // Set color immediately when starting
+    updateCountdownColor();
     
     timerInterval = setInterval(() => {
         timeRemaining--;
@@ -229,12 +238,14 @@ function showPauseButtons() {
     const existingPauseButtons = document.querySelectorAll('.pause-btn');
     existingPauseButtons.forEach(btn => btn.remove());
     
+    const mainControls = document.querySelector('.main-controls');
+    
     if (advancedMode) {
         const deductBtn = document.createElement('button');
         deductBtn.className = 'control-btn btn-deduct pause-btn';
         deductBtn.textContent = 'Sustain Objection (Deduct from Time)';
         deductBtn.addEventListener('click', resumeWithDeduction);
-        timerControls.appendChild(deductBtn);
+        mainControls.appendChild(deductBtn);
         
         const block = blocks[currentTeam].find(b => b.id === currentBlockId);
         if (block && block.linked !== null) {
@@ -245,7 +256,7 @@ function showPauseButtons() {
                 deductLinkedBtn.className = 'control-btn btn-deduct-linked pause-btn';
                 deductLinkedBtn.textContent = `Overrule Objection (Deduct from ${linkedBlock.name})`;
                 deductLinkedBtn.addEventListener('click', resumeWithLinkedDeduction);
-                timerControls.appendChild(deductLinkedBtn);
+                mainControls.appendChild(deductLinkedBtn);
             }
         }
     }
@@ -254,7 +265,7 @@ function showPauseButtons() {
     discardBtn.className = 'control-btn btn-discard pause-btn';
     discardBtn.textContent = 'Resume';
     discardBtn.addEventListener('click', resumeWithoutDeduction);
-    timerControls.appendChild(discardBtn);
+    mainControls.appendChild(discardBtn);
 }
 
 function resumeWithDeduction() {
@@ -323,7 +334,6 @@ function stopTimerButton() {
     
     isStopped = true;
     
-    // Don't change color when stopping - keep current color
     timeLabel.textContent = 'Stopped';
     secondaryTimer.classList.remove('visible');
     
@@ -366,6 +376,95 @@ startBtn.addEventListener('click', () => {
 
 stopBtn.addEventListener('click', stopTimerButton);
 nextBtn.addEventListener('click', nextBlock);
+
+// Quick control buttons
+resetBtn.addEventListener('click', () => {
+    const block = blocks[currentTeam].find(b => b.id === currentBlockId);
+    if (block) {
+        timeRemaining = parseTime(block.time);
+        block.remainingSeconds = timeRemaining;
+        
+        // Update originalTimeBeforePause if paused
+        if (isPaused) {
+            originalTimeBeforePause = timeRemaining;
+            secondaryTimer.textContent = formatTime(originalTimeBeforePause);
+        } else {
+            countdown.textContent = formatTime(timeRemaining);
+            updateCountdownColor();
+        }
+        
+        renderWidgets();
+    }
+});
+
+add15Btn.addEventListener('click', () => adjustTime(15));
+add30Btn.addEventListener('click', () => adjustTime(30));
+sub15Btn.addEventListener('click', () => adjustTime(-15));
+sub30Btn.addEventListener('click', () => adjustTime(-30));
+
+// Custom time input formatting
+customTimeInput.addEventListener('input', (e) => {
+    let v = e.target.value.replace(/\D/g, '');
+    if (v.length > 4) v = v.slice(0, 4);
+    if (v.length >= 3) v = v.slice(0, v.length - 2) + ':' + v.slice(v.length - 2);
+    e.target.value = v;
+});
+
+addCustomBtn.addEventListener('click', () => {
+    const seconds = parseTime(customTimeInput.value || '00:00');
+    adjustTime(seconds);
+    customTimeInput.value = '';
+});
+
+setCustomBtn.addEventListener('click', () => {
+    if (!customTimeInput.value.trim()) return;
+
+    const seconds = parseTime(customTimeInput.value);
+    const block = blocks[currentTeam].find(b => b.id === currentBlockId);
+
+    if (block) {
+        timeRemaining = seconds;
+        block.remainingSeconds = timeRemaining;
+
+        // Update originalTimeBeforePause if paused
+        if (isPaused) {
+            originalTimeBeforePause = timeRemaining;
+            secondaryTimer.textContent = formatTime(originalTimeBeforePause);
+        } else {
+            countdown.textContent = formatTime(timeRemaining);
+            updateCountdownColor();
+        }
+
+        renderWidgets();
+    }
+
+    customTimeInput.value = '';
+});
+
+subCustomBtn.addEventListener('click', () => {
+    const seconds = parseTime(customTimeInput.value || '00:00');
+    adjustTime(-seconds);
+    customTimeInput.value = '';
+});
+
+function adjustTime(seconds) {
+    const block = blocks[currentTeam].find(b => b.id === currentBlockId);
+    if (block) {
+        timeRemaining += seconds;
+        block.remainingSeconds = timeRemaining;
+        
+        // Update originalTimeBeforePause if paused
+        if (isPaused) {
+            originalTimeBeforePause = timeRemaining;
+            secondaryTimer.textContent = formatTime(originalTimeBeforePause);
+        } else {
+            countdown.textContent = formatTime(timeRemaining);
+            updateCountdownColor();
+        }
+        
+        renderWidgets();
+    }
+}
 
 // Initialize with first block of left team
 if (blocks.left.length > 0) {
