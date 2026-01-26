@@ -55,6 +55,7 @@ const customTimeInput = document.getElementById('custom-time-input');
 const addCustomBtn = document.getElementById('add-custom-btn');
 const setCustomBtn = document.getElementById('set-custom-btn');
 const subCustomBtn = document.getElementById('sub-custom-btn');
+const clearCustomBtn = document.getElementById('clear-custom-btn');
 
 // Set team names
 document.getElementById('left-team-name').textContent = leftTeamName;
@@ -411,13 +412,12 @@ customTimeInput.addEventListener('input', (e) => {
 });
 
 addCustomBtn.addEventListener('click', () => {
-    const seconds = parseTime(customTimeInput.value || '00:00');
+    const seconds = parseTime(customTimeInput.value.length < 3 ? "00:00" : customTimeInput.value);
     adjustTime(seconds);
-    customTimeInput.value = '';
 });
 
 setCustomBtn.addEventListener('click', () => {
-    if (!customTimeInput.value.trim()) return;
+    if (!customTimeInput.value.trim() || customTimeInput.value.length < 3) return;
 
     const seconds = parseTime(customTimeInput.value);
     const block = blocks[currentTeam].find(b => b.id === currentBlockId);
@@ -438,12 +438,14 @@ setCustomBtn.addEventListener('click', () => {
         renderWidgets();
     }
 
-    customTimeInput.value = '';
 });
 
 subCustomBtn.addEventListener('click', () => {
-    const seconds = parseTime(customTimeInput.value || '00:00');
+    const seconds = parseTime(customTimeInput.value.length < 3 ? "00:00" : customTimeInput.value);
     adjustTime(-seconds);
+});
+
+clearCustomBtn.addEventListener('click', () => {
     customTimeInput.value = '';
 });
 
