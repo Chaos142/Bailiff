@@ -1,14 +1,29 @@
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
 body {
     margin: 0;
     padding: 20px;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    background: #1a1a1a;
-    color: #f0f0f0;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background: #1a1410;
+    color: #f0e8d8;
     display: flex;
     flex-direction: column;
     align-items: center;
-    line-height: 1.5;
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Court decorative bar */
+.court-bar {
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #c9a84c, transparent);
+    margin-bottom: 30px;
+    flex-shrink: 0;
 }
 
 header {
@@ -18,26 +33,41 @@ header {
     width: 100%;
 }
 
+.court-emblem {
+    color: #c9a84c;
+    opacity: 0.7;
+    margin-bottom: 12px;
+}
+
 header h1 {
-    font-size: 2.2rem;
+    font-size: 2.4rem;
     font-weight: 800;
-    letter-spacing: -0.03em;
+    font-family: 'Playfair Display', Georgia, serif;
+    letter-spacing: 0.02em;
     text-align: center;
-    margin-bottom: 8px;
-    color: #fff;
+    margin: 0 0 6px 0;
+    color: #f0e8d8;
+}
+
+.court-subtitle {
+    font-size: 0.85rem;
+    color: #7a6a5a;
+    margin: 0 0 20px 0;
+    font-style: italic;
+    letter-spacing: 0.04em;
 }
 
 .byline {
     text-align: center;
-    font-size: 0.85rem;
-    color: #666;
+    font-size: 0.8rem;
+    color: #5a4a3a;
     margin-bottom: 40px;
-    font-weight: 500;
+    font-weight: 400;
     letter-spacing: 0.02em;
 }
 
-.byline a { color: #0077cc; text-decoration: none; font-weight: 600; transition: color 0.2s; }
-.byline a:hover { color: #00bbff; }
+.byline a { color: #c9a84c; text-decoration: none; font-weight: 600; transition: color 0.2s; }
+.byline a:hover { color: #d4af37; }
 
 /* ===== TEAM ROW ===== */
 .team-row {
@@ -51,30 +81,31 @@ header h1 {
 .input-group { display: flex; flex-direction: column; text-align: center; }
 
 .input-group label {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: 600;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.06em;
     margin-bottom: 8px;
-    color: #888;
+    color: #a09080;
 }
 
 .input-group input {
     padding: 14px;
     font-size: 1.1rem;
-    font-family: inherit;
-    border-radius: 12px;
-    border: 1px solid #444;
-    background: #252525;
-    color: white;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    border-radius: 10px;
+    border: 1px solid #4a3a2a;
+    background: #2a2018;
+    color: #f0e8d8;
     text-align: center;
     width: 260px;
-    transition: border-color 0.2s;
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-.input-group input:focus { outline: none; border-color: #0077cc; }
+.input-group input:focus { outline: none; border-color: #c9a84c; box-shadow: 0 0 0 2px rgba(201, 168, 76, 0.15); }
 
-.vs { font-size: 1.2rem; font-weight: 900; color: #444; padding-top: 28px; }
+.vs { font-size: 1.2rem; font-weight: 900; font-family: 'Playfair Display', Georgia, serif; color: #5a4a3a; padding-top: 28px; }
 
 /* ===== ADVANCED MODE TOGGLE ===== */
 .toggle-container {
@@ -84,15 +115,16 @@ header h1 {
     gap: 12px;
     margin-bottom: 40px;
     padding: 16px 24px;
-    background: #252525;
-    border-radius: 12px;
-    border: 1px solid #333;
+    background: #2a2018;
+    border-radius: 10px;
+    border: 1px solid #3a2a20;
 }
 
 .toggle-container label {
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: #ccc;
+    font-size: 0.9rem;
+    font-weight: 500;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #c9a84c;
     cursor: pointer;
 }
 
@@ -115,7 +147,7 @@ header h1 {
     left: 0;
     right: 0;
     bottom: 0;
-    background: #444;
+    background: #4a3a2a;
     border-radius: 26px;
     transition: background 0.3s;
 }
@@ -127,16 +159,17 @@ header h1 {
     width: 20px;
     left: 3px;
     bottom: 3px;
-    background: white;
+    background: #a09080;
     border-radius: 50%;
     transition: transform 0.3s;
 }
 
 .toggle-switch input:checked + .toggle-slider {
-    background: #0077cc;
+    background: #c9a84c;
 }
 
 .toggle-switch input:checked + .toggle-slider:before {
+    background: #1a1410;
     transform: translateX(24px);
 }
 
@@ -146,37 +179,52 @@ header h1 {
 .court-panel {
     width: 90%;
     max-width: 900px;
-    background: #222;
-    border: 1px solid #333;
-    border-radius: 32px;
+    background: #2a2018;
+    border: 1px solid #3a2a20;
+    border-radius: 28px;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 30px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
     gap: 20px;
 }
 
 .panel-header {
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+    padding-left: 4px;
     margin-bottom: 10px;
 }
 
 #add-block-btn {
-    padding: 12px 24px;
-    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 24px;
+    font-size: 0.85rem;
     font-weight: 600;
-    border-radius: 10px;
-    border: none;
-    background-color: #0077cc;
-    color: white;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    border-radius: 999px;
+    border: 2px solid #c9a84c;
+    background: transparent;
+    color: #c9a84c;
     cursor: pointer;
-    transition: background 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-#add-block-btn:hover { background-color: #0088ee; }
+#add-block-btn:hover {
+    background: #c9a84c;
+    color: #1a1410;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(201, 168, 76, 0.3);
+}
+
+#add-block-btn:active { transform: translateY(0) scale(0.97); }
 
 /* ===== START TRIAL BUTTON ===== */
 .start-trial-container {
@@ -184,47 +232,55 @@ header h1 {
 }
 
 #start-trial-btn {
-    padding: 18px 48px;
-    font-size: 1.2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 16px 52px;
+    font-size: 1.05rem;
     font-weight: 700;
-    border-radius: 12px;
-    border: none;
-    background: #00aa55;
-    color: white;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    border-radius: 999px;
+    border: 2px solid #c9a84c;
+    background: transparent;
+    color: #c9a84c;
     cursor: pointer;
-    transition: all 0.2s;
-    box-shadow: 0 4px 15px rgba(0, 170, 85, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 #start-trial-btn:hover {
-    background: #00bb66;
+    background: #c9a84c;
+    color: #1a1410;
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 170, 85, 0.4);
+    box-shadow: 0 8px 30px rgba(201, 168, 76, 0.4);
 }
+
+#start-trial-btn:active { transform: translateY(0) scale(0.97); }
 
 /* ===== EDIT PANEL ===== */
 .block-edit-panel {
-    background: #2a2a2a;
+    background: #3a2a20;
     padding: 24px;
-    border-radius: 20px;
-    border: 1px solid #0077cc;
+    border-radius: 16px;
+    border: 1px solid #c9a84c;
     margin: 8px 0 16px 0;
     width: 100%;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     gap: 16px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    transform-origin: top;
-    animation: expandPanel 0.25s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    animation: expandPanel 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 @keyframes expandPanel {
-    from { opacity: 0; transform: scaleY(0.95); margin-bottom: -50px; }
-    to { opacity: 1; transform: scaleY(1); margin-bottom: 16px; }
+    from { opacity: 0; transform: translateY(-10px) scale(0.97); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-.block-edit-panel h3 { margin: 0; font-size: 1.1rem; color: #fff; }
+.block-edit-panel h3 { margin: 0; font-size: 1rem; font-family: 'Playfair Display', Georgia, serif; color: #f0e8d8; font-weight: 700; }
 .block-edit-panel.hidden { display: none; }
 
 .edit-fields { display: flex; gap: 16px; flex-wrap: wrap; }
@@ -235,115 +291,167 @@ header h1 {
     display: flex; 
     flex-direction: column; 
     gap: 8px; 
-    font-size: 0.75rem; 
-    font-weight: 700; 
-    color: #888; 
+    font-size: 0.7rem; 
+    font-weight: 600;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #a09080; 
     text-transform: uppercase; 
+    letter-spacing: 0.05em;
 }
 
 .edit-fields input, 
 .edit-fields select { 
     padding: 12px; 
-    background: #1a1a1a; 
-    border: 1px solid #444; 
-    color: white; 
-    border-radius: 10px; 
-    font-family: inherit;
-    font-size: 0.95rem;
+    background: #2a2018; 
+    border: 1px solid #4a3a2a; 
+    color: #f0e8d8; 
+    border-radius: 8px; 
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 0.9rem;
     outline: none;
+    transition: border-color 0.2s;
+}
+
+.edit-fields input:focus,
+.edit-fields select:focus {
+    border-color: #c9a84c;
 }
 
 .edit-fields select {
     appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23a09080' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: calc(100% - 12px) center;
     padding-right: 36px;
 }
 
-.edit-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 4px; }
+.edit-actions { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
 
-#save-block-btn { background: #0077cc; color: white; font-weight: 600; border: none; padding: 12px; border-radius: 8px; cursor: pointer; }
-#cancel-edit-btn { background: #333; color: #999; font-weight: 600; border: none; padding: 12px; border-radius: 8px; cursor: pointer; }
+#save-block-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: transparent;
+    color: #c9a84c;
+    font-weight: 600;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    border: 2px solid #c9a84c;
+    padding: 12px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+#save-block-btn:hover { background: #c9a84c; color: #1a1410; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(201, 168, 76, 0.3); }
+#save-block-btn:active { transform: translateY(0) scale(0.97); }
+
+#cancel-edit-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: transparent;
+    color: #7a6a5a;
+    font-weight: 600;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    border: 2px solid #4a3a2a;
+    padding: 12px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+#cancel-edit-btn:hover { background: #4a3a2a; color: #f0e8d8; border-color: #5a4a3a; }
+#cancel-edit-btn:active { transform: scale(0.97); }
 
 /* ===== BLOCK CARDS ===== */
-.block-list { width: 100%; display: flex; flex-direction: column; gap: 12px; }
+.block-list { width: 100%; display: flex; flex-direction: column; gap: 10px; }
 
 .block-card {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #2a2a2a;
-    padding: 18px 24px;
-    border-radius: 16px;
-    border: 1px solid #333;
+    background: #3a2a20;
+    padding: 16px 22px;
+    border-radius: 14px;
+    border: 1px solid #4a3a2a;
     cursor: grab;
     max-height: 200px;
-    overflow: hidden;
-    transition: 
-        transform 0.2s cubic-bezier(0.2, 0, 0, 1), 
-        background 0.2s, 
-        opacity 0.2s,
-        max-height 0.4s ease,
-        margin 0.4s ease,
-        padding 0.4s ease;
-    animation: blockIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition:
+        transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+        background 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+        opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+        max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        margin 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        padding 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: blockIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 @keyframes blockIn {
-    from { opacity: 0; transform: translateY(15px) scale(0.95); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
+    from { opacity: 0; transform: translateX(-50px) rotate(-2deg); }
+    to { opacity: 1; transform: translateX(0) rotate(0); }
+}
+
+.block-card:hover {
+    border-color: #5a4a3a;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    transform: translateY(-2px);
 }
 
 .block-card.removing {
-    transform: scale(0.9);
+    transform: translateY(-30px) scale(0.85);
     opacity: 0;
     max-height: 0;
+    overflow: hidden;
     margin-bottom: 0;
     padding-top: 0;
     padding-bottom: 0;
-    border-color: transparent;
+    border-width: 0;
     pointer-events: none;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .block-card.dragging {
-    opacity: 0.3;
-    filter: grayscale(1);
+    opacity: 0.75;
+    transform: scale(1.03);
+    box-shadow: 0 0 30px rgba(201, 168, 76, 0.3);
+    z-index: 100;
 }
 
 .block-placeholder {
-    border: 2px dashed #0077cc;
-    background: rgba(0, 119, 204, 0.05);
-    border-radius: 16px;
-    height: 62px;
+    border: none;
+    border-radius: 14px;
+    height: 4px;
     width: 100%;
+    background: linear-gradient(90deg, transparent, #c9a84c, transparent);
+    margin: 3px 0;
     pointer-events: none;
 }
 
 .block-main-content { display: flex; flex: 1; align-items: center; }
-.block-main-content::before { content: "⠿"; margin-right: 18px; color: #555; font-size: 1.1rem; }
+.block-main-content::before { content: "⠿"; margin-right: 16px; color: #5a4a3a; font-size: 1rem; }
 
-/* Remove unused team badge styles */
-.link-icon { color: #00bbff; margin-right: 12px; display: flex; align-items: center; opacity: 0.8; }
-.block-name { flex: 1; font-size: 1.05rem; font-weight: 600; display: flex; align-items: center; }
+.link-icon { color: #c9a84c; margin-right: 10px; display: flex; align-items: center; opacity: 0.85; }
+.block-name { flex: 1; font-size: 1rem; font-weight: 500; font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; display: flex; align-items: center; }
 
 .block-time { 
-    font-size: 1.1rem; 
+    font-size: 1rem; 
     font-family: 'JetBrains Mono', monospace; 
     font-weight: 600; 
     width: 80px; 
     text-align: right; 
-    margin-right: 24px; 
-    color: #00bbff; 
+    margin-right: 20px; 
+    color: #c9a84c; 
 }
 
 .block-controls { display: flex; align-items: center; justify-content: center; }
 
 .block-delete {
-    background: transparent; border: none; color: #555;
-    padding: 8px; border-radius: 8px; cursor: pointer;
+    background: transparent; border: 2px solid #4a3a2a; color: #5a4a3a;
+    width: 36px; height: 36px; border-radius: 50%; cursor: pointer;
     display: flex; align-items: center; justify-content: center;
-    transition: all 0.2s;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.block-delete:hover { color: #ff4444; background: rgba(255, 68, 68, 0.1); }
+.block-delete:hover { color: #8b1a1a; border-color: #8b1a1a; background: rgba(139, 26, 26, 0.08); transform: scale(1.1); }
+.block-delete:active { transform: scale(0.9); }

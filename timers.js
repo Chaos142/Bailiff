@@ -23,7 +23,13 @@ let blocks = {
     right: blockTemplates.map(t => ({ ...t, team: 'right', remainingSeconds: null }))
 };
 
-const ICON_LINK = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="link-svg"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>`;
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+const ICON_LINK = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="link-svg"><line x1="12" y1="3" x2="12" y2="21"/><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="7" x2="6" y2="13"/><line x1="20" y1="7" x2="18" y2="13"/><path d="M2 13a4 4 0 0 0 8 0"/><path d="M14 13a4 4 0 0 0 8 0"/></svg>`;
 
 let currentBlockId = null;
 let currentTeam = null;
@@ -130,10 +136,10 @@ function renderWidgets() {
             }
 
             widget.innerHTML = `
-                <div class="widget-name">${linkIcon}${block.name}</div>
+                <div class="widget-name">${linkIcon}${escapeHtml(block.name)}</div>
                 <div class="widget-times">
                     <span class="${remainingClass}">${formatTime(remaining)}</span>
-                    <span class="widget-total">${block.time}</span>
+                    <span class="widget-total">${escapeHtml(block.time)}</span>
                 </div>
             `;
 
@@ -178,7 +184,9 @@ function loadBlock() {
     startBtn.textContent = 'Start';
     startBtn.className = 'control-btn btn-start';
     stopBtn.style.display = 'none';
-    nextBtn.style.display = 'none';
+    
+    const currentIndex = blocks[currentTeam].findIndex(b => b.id === currentBlockId);
+    nextBtn.style.display = currentIndex < blocks[currentTeam].length - 1 ? 'inline-block' : 'none';
     
     const pauseButtons = document.querySelectorAll('.pause-btn');
     pauseButtons.forEach(btn => btn.remove());
@@ -468,7 +476,19 @@ function adjustTime(seconds) {
     }
 }
 
-// Initialize with first block of left team
-if (blocks.left.length > 0) {
-    selectBlock(blocks.left[0].id, 'left');
+// Fallback if no blocks came from URL
+if (blockTemplates.length === 0) {
+    blockTemplates = [
+        { id: 1, name: "Opening Statement", time: "05:00", linked: null },
+        { id: 2, name: "Direct Examination", time: "25:00", linked: 3 },
+        { id: 3, name: "Cross Examination", time: "20:00", linked: 2 },
+        { id: 4, name: "Closing Argument", time: "05:00", linked: null }
+    ];
+    blocks = {
+        left: blockTemplates.map(t => ({ ...t, team: 'left', remainingSeconds: null })),
+        right: blockTemplates.map(t => ({ ...t, team: 'right', remainingSeconds: null }))
+    };
 }
+
+// Initialize with first block of left team
+selectBlock(blocks.left[0].id, 'left');
