@@ -81,17 +81,6 @@ body {
     justify-self: center;
 }
 
-.version-tag {
-    font-size: 0.55rem;
-    color: #4a3a2a;
-    border: 1px solid #3a2a20;
-    border-radius: 2px;
-    padding: 1px 5px;
-    display: inline-block;
-    font-family: 'JetBrains Mono', monospace;
-    margin-top: 6px;
-}
-
 .bench-header-center {
     display: flex;
     align-items: center;
@@ -665,10 +654,6 @@ body {
         display: none;
     }
 
-    .bench-header-right .version-tag {
-        display: none;
-    }
-
     .courtroom-body {
         flex-direction: column;
         overflow: visible;
@@ -770,6 +755,40 @@ body {
         padding: 6px 10px;
         font-size: 0.68rem;
     }
+}
+
+/* ===== FOOTER ===== */
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding: 6px 20px;
+    color: #6a5a4a;
+    font-size: 0.65rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background: #1a1410;
+    border-top: 1px solid #2a2018;
+    z-index: 1000;
+}
+
+footer a {
+    color: #8a7a6a;
+    text-decoration: underline;
+}
+
+footer a:hover {
+    color: #c9a84c;
+}
+
+.version-footer {
+    display: inline;
+    margin: 0 0 0 8px;
+    font-size: 0.55rem;
+    color: #4a3a2a;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.02em;
 }
 
 

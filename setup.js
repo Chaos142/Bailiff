@@ -101,9 +101,7 @@ const FAMOUS_CASES = [
     // Celebrity
     { p: "Depp", d: "Heard" },
     { p: "Heard", d: "Depp" },
-    { p: "Bollea", d: "Gawker Media" },
     { p: "Swift", d: "Mueller" },
-    { p: "Carey", d: "Loftus" },
     { p: "Midler", d: "Ford Motor Company" },
 
     // Tech
@@ -116,22 +114,16 @@ const FAMOUS_CASES = [
     { p: "Carpenter", d: "United States" },
     { p: "Riley", d: "California" },
     { p: "Packingham", d: "North Carolina" },
-
-    // Musk / OpenAI
-    { p: "Musk", d: "OpenAI" },
-    { p: "OpenAI", d: "Musk" },
+    { p: "Musk", d: "Altman" },
 
     // Trump
     { p: "Trump", d: "Anderson" },
     { p: "Trump", d: "United States" },
-    { p: "United States", d: "Trump" },
     { p: "Clinton", d: "Jones" },
     { p: "Trump", d: "Vance" },
     { p: "Anderson", d: "Griswold" },
     { p: "Carroll", d: "Trump" },
-    { p: "Carroll", d: "Trump II" },
-    { p: "Trump", d: "Carroll" },
-    { p: "Trump", d: "CNN" },
+    { p: "CNN", d: "Trump" },
     { p: "Trump", d: "Woodward" },
     { p: "Trump Media & Technology Group", d: "Washington Post" },
 
